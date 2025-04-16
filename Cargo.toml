@@ -1,9 +1,10 @@
 [package]
 name = "log4you"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2024"
+rust-version = "1.86.0"
 authors = ["Jerry Maheswara<jerrymaheswara@gmail.com>"]
-description = "Rust structured logging with dynamic UUID log IDs, built on log4rs. Plug and play!"
+description = "Structured logging for Rust with dynamic UUID log IDs, built on log4rs."
 license = "Apache-2.0"
 repository = "https://github.com/jerry-maheswara-github/log4you"
 readme = "README.md"
