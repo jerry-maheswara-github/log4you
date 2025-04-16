@@ -17,3 +17,4 @@ target/
 .idea
 *.Lock
 logs/
+.DS_Store
