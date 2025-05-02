@@ -8,6 +8,6 @@ fn main() {
     log_error!("Failed to connect to DB");
     log_debug!("Debug info here");
 
-    let custom_id = log4you::log_id!();
+    let custom_id = log_id!();
     log_info_with_id!(custom_id, "This log uses custom log_id");
 }

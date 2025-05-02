@@ -7,11 +7,16 @@ pub trait LogIdFormat {
     fn from_log_id(log_id: &str) -> Option<Uuid>;
 }
 
+/// Implements `LogIdFormat` for `Uuid`, providing methods to convert
+/// to and from a hyphen-less log ID string.
 impl LogIdFormat for Uuid {
+    /// Converts the UUID to a 32-character, hyphen-less string.
     fn to_log_id(&self) -> String {
         self.to_string().replace("-", "")
     }
 
+    /// Parses a 32-character hyphen-less log ID string back into a `Uuid`.
+    /// Returns `None` if the string is not valid or incorrectly formatted.
     fn from_log_id(log_id: &str) -> Option<Uuid> {
         if log_id.len() != 32 {
             return None;

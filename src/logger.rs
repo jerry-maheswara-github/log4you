@@ -1,3 +1,5 @@
+//! Logger implementation and utilities used internally for structured logging.
+
 use std::path::PathBuf;
 use std::process;
 
@@ -5,7 +7,7 @@ use log4rs;
 use once_cell::sync::Lazy;
 use std::sync::RwLock;
 
-use uuid::Uuid;
+use crate::__uuid_crate::Uuid;
 use crate::utils::log_id::LogIdFormat;
 
 /// Global target log name (default: "log4you")
