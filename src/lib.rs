@@ -78,13 +78,13 @@
 //! 
 //! fn main() {
 //!     let logid = log_id!();
-//!     //! Initialize the logger with a log_id, a path to the YAML config, and the service name
+//!     // Initialize the logger with a log_id, a path to the YAML config, and the service name
 //!     Logger::init(&logid,  Some("config/log4you.yaml"), Some("log4you"));
 //! 
-//!     //! Log an info message, logid will be generated automatically
+//!     // Log an info message, logid will be generated automatically
 //!     log_info!("Service started");
 //! 
-//!     //! Log an info message, logid is defined by yourself
+//!     // Log an info message, logid is defined by yourself
 //!     let custom_log_id = log_id!();
 //!     log_info_with_id!(custom_log_id, "This log uses custom log_id");
 //! }
