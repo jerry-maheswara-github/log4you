@@ -1,20 +1,25 @@
+//! Macros wrapped to avoid requiring direct dependencies from the end user.
+
+
 /// Logs an info-level message with a dynamically generated `log_id`.
 ///
 /// This macro automatically generates a `log_id` using the `log_id!` macro and uses the `Logger::target`
 /// to determine the log target, which can be customized for the service. It then formats the message using
-/// `log::info!` with the generated `log_id` and the provided message arguments.
+/// `$crate::__log_crate::info!` with the generated `log_id` and the provided message arguments.
 ///
 /// # Example:
 /// ```rust
 /// use log4you::log_info;
 /// log_info!("User logged in successfully");
 /// ```
+/// 
+/// 
 #[macro_export]
 macro_rules! log_info {
     ($($arg:tt)*) => {{
         let log_id = $crate::log_id!();
         let target = $crate::logger::Logger::target();
-        log::info!(target: &*target, "log_id={}, {}", log_id, format_args!($($arg)*));
+        $crate::__log_crate::info!(target: &*target, "log_id={}, {}", log_id, format_args!($($arg)*));
     }}
 }
 
@@ -33,7 +38,7 @@ macro_rules! log_warn {
     ($($arg:tt)*) => {{
         let log_id = $crate::log_id!();
         let target = $crate::logger::Logger::target();
-        log::warn!(target: &*target, "log_id={}, {}", log_id, format_args!($($arg)*));
+        $crate::__log_crate::warn!(target: &*target, "log_id={}, {}", log_id, format_args!($($arg)*));
     }}
 }
 
@@ -52,7 +57,7 @@ macro_rules! log_error {
     ($($arg:tt)*) => {{
         let log_id = $crate::log_id!();
         let target = $crate::logger::Logger::target();
-        log::error!(target: &*target, "log_id={}, {}", log_id, format_args!($($arg)*));
+        $crate::__log_crate::error!(target: &*target, "log_id={}, {}", log_id, format_args!($($arg)*));
     }}
 }
 
@@ -71,7 +76,7 @@ macro_rules! log_debug {
     ($($arg:tt)*) => {{
         let log_id = $crate::log_id!();
         let target = $crate::logger::Logger::target();
-        log::debug!(target: &*target, "log_id={}, {}", log_id, format_args!($($arg)*));
+        $crate::__log_crate::debug!(target: &*target, "log_id={}, {}", log_id, format_args!($($arg)*));
     }}
 }
 
@@ -90,7 +95,7 @@ macro_rules! log_debug {
 macro_rules! log_info_with_id {
     ($log_id:expr, $($arg:tt)*) => {
         let target = $crate::logger::Logger::target();
-        log::info!(target: &*target, "log_id={}, {}", $log_id, format_args!($($arg)*));
+        $crate::__log_crate::info!(target: &*target, "log_id={}, {}", $log_id, format_args!($($arg)*));
     };
 }
 
@@ -108,7 +113,7 @@ macro_rules! log_info_with_id {
 macro_rules! log_warn_with_id {
     ($log_id:expr, $($arg:tt)*) => {
         let target = $crate::logger::Logger::target();
-        log::warn!(target: &*target, "log_id={}, {}", $log_id, format_args!($($arg)*));
+        $crate::__log_crate::warn!(target: &*target, "log_id={}, {}", $log_id, format_args!($($arg)*));
     };
 }
 
@@ -126,7 +131,7 @@ macro_rules! log_warn_with_id {
 macro_rules! log_error_with_id {
     ($log_id:expr, $($arg:tt)*) => {
         let target = $crate::logger::Logger::target();
-        log::error!(target: &*target, "log_id={}, {}", $log_id, format_args!($($arg)*));
+        $crate::__log_crate::error!(target: &*target, "log_id={}, {}", $log_id, format_args!($($arg)*));
     };
 }
 
@@ -144,7 +149,7 @@ macro_rules! log_error_with_id {
 macro_rules! log_debug_with_id {
     ($log_id:expr, $($arg:tt)*) => {
         let target = $crate::logger::Logger::target();
-        log::debug!(target: &*target, "log_id={}, {}", $log_id, format_args!($($arg)*));
+        $crate::__log_crate::debug!(target: &*target, "log_id={}, {}", $log_id, format_args!($($arg)*));
     };
 }
 
@@ -170,8 +175,7 @@ macro_rules! log_debug_with_id {
 #[macro_export]
 macro_rules! log_id {
     () => {{
-        use uuid::Uuid;
         use $crate::utils::log_id::LogIdFormat;
-        Uuid::now_v7().to_log_id()
+        $crate::__uuid_crate::Uuid::now_v7().to_log_id()
     }};
 }

@@ -103,3 +103,10 @@ This project is licensed under the Apache-2.0 license.
 ---
 
 > Built with ❤️ in Rust
+
+## Changelog
+
+### [v0.1.2]
+
+- Re-export `log` as `__log_crate` to support internal macro resolution without requiring users to depend on `log` explicitly.
+- Re-export `uuid` as `__uuid_crate` for similar internal macro usage convenience.
