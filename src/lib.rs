@@ -9,29 +9,15 @@
 //! 
 //! - 🔧 Powered by `log4rs`, configure logging dynamically with YAML configuration files, compatible with the standard Rust `log` facade
 //! - ✅ Structured logging with automatic **UUID log IDs**
-//! - 🆔 Generates a unique `log_id` (UUID v7) per log entry
+//! - 🆔 Generates a unique `log_id` (UUID v7) per log entry using Uuid::now_v7().simple() via `log_id!` macro
 //! - 🪄 Easy-to-use macros: `log_info!`, `log_error!`, etc.
 //! - 🛠️ Supports dynamic config paths, log rotation, and file size management
 //! - 🚀 Easy setup and integration — works out of the box
-//! - 🧵 Great for async or multi-threaded apps
+//! - 🧵 Great for async or multithreaded apps
 //! 
 //! Perfect for microservices, APIs, and any system where traceability and clean logs matter.
 //! 
-//! ## 📦 Installation
-//! 
-//! Add `log4you` to your `Cargo.toml`:
-//! 
-//! ```toml
-//! [dependencies]
-//! log4you = "0.1.1"
-//! ```
-//! 
-//! Or, use [cargo-edit](https://crates.io/crates/cargo-edit) to add it directly from your terminal:
-//! 
-//! ```bash
-//! cargo add log4you
-//! ```
-//! 
+//! ---
 //! 
 //! ## ⚙️ Example YAML Configuration
 //! 
@@ -90,28 +76,35 @@
 //! }
 //! ```
 //! 
-//! 
-//! ## Author
-//! Jerry Maheswara <jerrymaheswara@gmail.com>
-//! 
-//! 
-//! ## 📖 License
-//! 
-//! This project is licensed under the Apache-2.0 license.
-//! 
 //! ---
-//! 
-//! > Built with ❤️ in Rust
+//!
+//! ## 📜  License
+//!
+//! Licensed under:
+//! - Apache License, Version 2.0 [LICENSE](http://www.apache.org/licenses/LICENSE-2.0.txt)
 //!
 //! ---
-//! 
-//! ## Changelog
-//! 
-//! ### [v0.1.2]
-//! 
-//! - Re-export `log` as `__log_crate` to support internal macro resolution without requiring users to depend on `log` explicitly.
-//! - Re-export `uuid` as `__uuid_crate` for similar internal macro usage convenience.
-
+//!
+//! ## 🧑‍💻 Author
+//!
+//! Created and maintained by [Jerry Maheswara](https://github.com/jerry-maheswara-github)
+//!
+//! Feel free to reach out for suggestions, issues, or improvements!
+//!
+//! ---
+//!
+//! ## ❤️ Built with Love in Rust
+//!
+//! This project is built with ❤️ using **Rust** — a systems programming language that is safe, fast, and concurrent. Rust is the perfect choice for building reliable and efficient applications.
+//!
+//! ---
+//!
+//! ## 👋 Contributing
+//!
+//! Pull requests, issues, and feedback are welcome!  
+//! If you find this crate useful, give it a ⭐ and share it with others in the Rust community.
+//!
+//! ---
 
 pub use log as __log_crate;
 pub use uuid as __uuid_crate;

@@ -176,6 +176,7 @@ macro_rules! log_debug_with_id {
 macro_rules! log_id {
     () => {{
         use $crate::utils::log_id::LogIdFormat;
-        $crate::__uuid_crate::Uuid::now_v7().to_log_id()
+        $crate::__uuid_crate::Uuid::now_v7().simple().to_string()
+
     }};
 }
