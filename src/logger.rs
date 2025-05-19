@@ -27,20 +27,18 @@ pub static LOG_TARGET: Lazy<RwLock<String>> = Lazy::new(|| RwLock::new("log4you"
 /// # Example Usage
 ///
 /// ```rust
-/// use log4you::{logger::Logger, log_id, log_info, log_info_with_id};
+///  use log4you::{logger::Logger, log_id, log_info, log_info_with_id};
 ///
-/// fn main() {
-///     let logid = log_id!();
-///     // Initialize the logger with a log_id, a path to the YAML config, and the service name
-///     Logger::init(&logid,  Some("config/log4you.yaml"), Some("log4you"));
+///  let logid = log_id!();
+///  // Initialize the logger with a log_id, a path to the YAML config, and the service name
+///  Logger::init(&logid,  Some("config/log4you.yaml"), Some("log4you"));
 ///
-///     // Log an info message, logid will be generated automatically
-///     log_info!("Service started");
+///  // Log an info message, logid will be generated automatically
+///  log_info!("Service started");
 ///
-///     // Log an info message, logid is defined by yourself
-///     let custom_id = log4you::log_id!();
-///     log_info_with_id!(custom_id, "This log uses custom log_id");
-/// }
+///  // Log an info message, logid is defined by yourself
+///  let custom_id = log4you::log_id!();
+///  log_info_with_id!(custom_id, "This log uses custom log_id");
 /// ```
 ///
 /// ## Methods
@@ -54,7 +52,6 @@ pub static LOG_TARGET: Lazy<RwLock<String>> = Lazy::new(|| RwLock::new("log4you"
 /// ## Example YAML Configuration:
 /// See the [`log4rs` configuration documentation](https://docs.rs/log4rs/latest/log4rs/#configuration)
 /// for details on how to configure the loggers, appenders, and log levels.
-
 pub struct Logger;
 
 impl Logger {
@@ -75,20 +72,18 @@ impl Logger {
     /// # Example
     ///
     /// ```rust
-    /// use log4you::{logger::Logger, log_info, log_info_with_id};
+    ///  use log4you::{logger::Logger, log_info, log_info_with_id};
     ///
-    /// fn main() {
-    ///     Logger::init(
-    ///         "MY-LOG-ID",
-    ///         Some("config/log4you.yaml"),
-    ///         Some("my_service_name"),
-    ///     );
+    ///  Logger::init(
+    ///     "MY-LOG-ID",
+    ///     Some("config/log4you.yaml"),
+    ///     Some("my_service_name"),
+    ///  );
     ///
-    ///     log_info!("Service started");
+    ///  log_info!("Service started");
     ///
-    ///     let custom_id = log4you::log_id!();
-    ///     log_info_with_id!(custom_id, "This log uses custom log_id");
-    /// }
+    ///  let custom_id = log4you::log_id!();
+    ///  log_info_with_id!(custom_id, "This log uses custom log_id");
     /// ```
     ///
     /// # Notes
@@ -153,7 +148,6 @@ impl Logger {
     ///   followed by the log message. You can modify this pattern to suit your needs.
     /// - Ensure that the specified log file paths (`logs/log4you.log`) exist or are writable by the application.
     /// - The rolling policy ensures log files do not grow too large by archiving older logs (with up to 5 backups).
-
     pub fn init(log_id: &str, config_path: Option<&str>, service_name: Option<&str>) {
         if let Some(name) = service_name {
             let mut target = LOG_TARGET.write().unwrap();

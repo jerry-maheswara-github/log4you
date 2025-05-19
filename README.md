@@ -5,6 +5,8 @@
 
 **log4you** is a lightweight logging crate, designed for applications that need consistent, structured logging with unique log identifiers (UUIDs). It allows simple, efficient, and consistent logging with unique log IDs for each request.
 
+---
+
 ## ✨ Features
 
 - 🔧 Powered by `log4rs`, configure logging dynamically with YAML configuration files, compatible with the standard Rust `log` facade
@@ -17,22 +19,7 @@
 
 Perfect for microservices, APIs, and any system where traceability and clean logs matter.
 
-## 📦 Installation
-
-
-Add `log4you` to your `Cargo.toml`:
-
-```toml
-[dependencies]
-log4you = "0.1.1"
-```
-
-Or, use [cargo-edit](https://crates.io/crates/cargo-edit) to add it directly from your terminal:
-
-```bash
-cargo add log4you
-```
-
+---
 
 ## ⚙️ Example YAML Configuration
 
@@ -72,6 +59,8 @@ loggers:
       - log4you
 ```
 
+---
+
 ## 🛠️ Usage Example
 
 ```rust
@@ -90,6 +79,8 @@ fn main() {
     log_info_with_id!(custom_log_id, "This log uses custom log_id");
 }
 ```
+
+---
 
 ## 📜  License
 

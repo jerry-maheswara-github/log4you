@@ -5,6 +5,8 @@
 //! 
 //! **log4you** is a lightweight logging crate, designed for applications that need consistent, structured logging with unique log identifiers (UUIDs). It allows simple, efficient, and consistent logging with unique log IDs for each request.
 //! 
+//! ---
+//! 
 //! ## ✨ Features
 //! 
 //! - 🔧 Powered by `log4rs`, configure logging dynamically with YAML configuration files, compatible with the standard Rust `log` facade
@@ -57,23 +59,23 @@
 //!       - log4you
 //! ```
 //! 
+//! ---
+//! 
 //! ## 🛠️ Usage Example
 //! 
 //! ```rust
-//! use log4you::{logger::Logger, log_id, log_info, log_info_with_id};
+//!  use log4you::{logger::Logger, log_id, log_info, log_info_with_id};
 //! 
-//! fn main() {
-//!     let logid = log_id!();
-//!     // Initialize the logger with a log_id, a path to the YAML config, and the service name
-//!     Logger::init(&logid,  Some("config/log4you.yaml"), Some("log4you"));
+//!  let logid = log_id!();
+//!  // Initialize the logger with a log_id, a path to the YAML config, and the service name
+//!  Logger::init(&logid,  Some("config/log4you.yaml"), Some("log4you"));
 //! 
-//!     // Log an info message, logid will be generated automatically
-//!     log_info!("Service started");
+//!  // Log an info message, logid will be generated automatically
+//!  log_info!("Service started");
 //! 
-//!     // Log an info message, logid is defined by yourself
-//!     let custom_log_id = log_id!();
-//!     log_info_with_id!(custom_log_id, "This log uses custom log_id");
-//! }
+//!  // Log an info message, logid is defined by yourself
+//!  let custom_log_id = log_id!();
+//!  log_info_with_id!(custom_log_id, "This log uses custom log_id");
 //! ```
 //! 
 //! ---
